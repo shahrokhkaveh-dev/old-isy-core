@@ -2,7 +2,7 @@ vendor
 tests
 node_modules
 storage
-public
 .env
 .idea
+public/build
 vite.config.js

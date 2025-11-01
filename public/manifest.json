@@ -1,0 +1,488 @@
+{
+  "resources/js/Pages/Brands.jsx": {
+    "file": "assets/Brands-0dc2cded.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Brands.jsx"
+  },
+  "resources/js/Pages/Home.jsx": {
+    "file": "assets/Home-9007c0a6.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/MobileCategoryNav.jsx",
+      "resources/js/Pages/components/module/SidebarHome.jsx",
+      "resources/js/Pages/components/template/HomePage.jsx",
+      "resources/js/Pages/components/template/HomePageMbile.jsx",
+      "resources/js/Pages/components/module/HomeNews.jsx",
+      "resources/js/Pages/components/module/HomeCategoryProducts.jsx",
+      "resources/js/Pages/components/module/ProductHomeCard.jsx",
+      "resources/js/Pages/components/module/CategoryNav.jsx",
+      "resources/js/Pages/components/module/CategoryMainHome.jsx",
+      "resources/js/Pages/components/module/ProductsSideHome.jsx",
+      "resources/js/Pages/components/module/HomeOption.jsx",
+      "resources/js/Pages/components/module/BestProducts.jsx",
+      "resources/js/Pages/components/module/MobileNavbarHome.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Home.jsx"
+  },
+  "resources/js/Pages/Home/Home.jsx": {
+    "file": "assets/Home-1a8a9e95.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/template/AboutSanatyar.jsx",
+      "resources/js/Pages/components/module/MobileAboutSanat.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Home/Home.jsx"
+  },
+  "resources/js/Pages/Products.jsx": {
+    "file": "assets/Products-e4a4ddf5.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/CategorySide.jsx",
+      "resources/js/Pages/components/module/MobileCategory.jsx",
+      "resources/js/Pages/components/module/NavbarSearch.jsx",
+      "resources/js/Pages/components/template/Product.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Products.jsx"
+  },
+  "resources/js/Pages/SearchPage.jsx": {
+    "file": "assets/SearchPage-d43fbedd.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/CategorySide.jsx",
+      "resources/js/Pages/components/module/MobileCategory.jsx",
+      "resources/js/Pages/components/module/NavbarSearch.jsx",
+      "resources/js/Pages/components/template/Product.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/SearchPage.jsx"
+  },
+  "resources/js/Pages/Welcome.jsx": {
+    "file": "assets/Welcome-fc445866.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Welcome.jsx"
+  },
+  "resources/js/Pages/components/module/AboutCompanyPage.jsx": {
+    "file": "assets/AboutCompanyPage-01b39bed.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/AboutCompanyPage.jsx"
+  },
+  "resources/js/Pages/components/module/BestProducts.jsx": {
+    "file": "assets/BestProducts-f219b645.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/ProductHomeCard.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/BestProducts.jsx"
+  },
+  "resources/js/Pages/components/module/CallCompany.jsx": {
+    "file": "assets/CallCompany-688c2ce6.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CallCompany.jsx"
+  },
+  "resources/js/Pages/components/module/CardProduct.jsx": {
+    "file": "assets/CardProduct-dbf2f273.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CardProduct.jsx"
+  },
+  "resources/js/Pages/components/module/Category.jsx": {
+    "file": "assets/Category-50eb9b4d.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/Category.jsx"
+  },
+  "resources/js/Pages/components/module/CategoryCompany.jsx": {
+    "file": "assets/CategoryCompany-60d56b1f.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/ProductCompany.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CategoryCompany.jsx"
+  },
+  "resources/js/Pages/components/module/CategoryMainHome.jsx": {
+    "file": "assets/CategoryMainHome-9b1a3e5c.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CategoryMainHome.jsx"
+  },
+  "resources/js/Pages/components/module/CategoryNav.jsx": {
+    "file": "assets/CategoryNav-507cffad.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CategoryNav.jsx"
+  },
+  "resources/js/Pages/components/module/CategorySide.jsx": {
+    "file": "assets/CategorySide-1fc503ff.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CategorySide.jsx"
+  },
+  "resources/js/Pages/components/module/CompantCategorySide.jsx": {
+    "file": "assets/CompantCategorySide-75df0f7f.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CompantCategorySide.jsx"
+  },
+  "resources/js/Pages/components/module/CompanyCategorySide.jsx": {
+    "file": "assets/CompanyCategorySide-b8113ba5.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CompanyCategorySide.jsx"
+  },
+  "resources/js/Pages/components/module/CompanyDetail.jsx": {
+    "file": "assets/CompanyDetail-c0c9f2f2.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CompanyDetail.jsx"
+  },
+  "resources/js/Pages/components/module/CompanyProducts.jsx": {
+    "file": "assets/CompanyProducts-101b7348.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/CompanyProducts.jsx"
+  },
+  "resources/js/Pages/components/module/Explore.jsx": {
+    "file": "assets/Explore-204e28ca.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/CardProduct.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/Explore.jsx"
+  },
+  "resources/js/Pages/components/module/HomeCategoryProducts.jsx": {
+    "file": "assets/HomeCategoryProducts-4669c4d9.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/ProductHomeCard.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/HomeCategoryProducts.jsx"
+  },
+  "resources/js/Pages/components/module/HomeNews.jsx": {
+    "file": "assets/HomeNews-084d2507.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/HomeNews.jsx"
+  },
+  "resources/js/Pages/components/module/HomeOption.jsx": {
+    "file": "assets/HomeOption-3db7385e.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/HomeOption.jsx"
+  },
+  "resources/js/Pages/components/module/HomeProduct.jsx": {
+    "file": "assets/HomeProduct-711db99c.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/HomeProduct.jsx"
+  },
+  "resources/js/Pages/components/module/HomeReq.jsx": {
+    "file": "assets/HomeReq-008118ee.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/HomeReq.jsx"
+  },
+  "resources/js/Pages/components/module/MobileAboutSanat.jsx": {
+    "file": "assets/MobileAboutSanat-73a9d263.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/MobileAboutSanat.jsx"
+  },
+  "resources/js/Pages/components/module/MobileCategory.jsx": {
+    "file": "assets/MobileCategory-4a56ec25.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/MobileCategory.jsx"
+  },
+  "resources/js/Pages/components/module/MobileCategoryNav.jsx": {
+    "file": "assets/MobileCategoryNav-94c566d8.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/MobileCategoryNav.jsx"
+  },
+  "resources/js/Pages/components/module/MobileNavbarCompany.jsx": {
+    "file": "assets/MobileNavbarCompany-359ec855.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/MobileNavbarCompany.jsx"
+  },
+  "resources/js/Pages/components/module/MobileNavbarHome.jsx": {
+    "file": "assets/MobileNavbarHome-a124acd0.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/MobileNavbarHome.jsx"
+  },
+  "resources/js/Pages/components/module/NavbarCompany.jsx": {
+    "file": "assets/NavbarCompany-eb7463c4.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/NavbarCompany.jsx"
+  },
+  "resources/js/Pages/components/module/NavbarProduct.jsx": {
+    "file": "assets/NavbarProduct-8feead66.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/NavbarProduct.jsx"
+  },
+  "resources/js/Pages/components/module/NavbarSearch.jsx": {
+    "file": "assets/NavbarSearch-49101e7e.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/NavbarSearch.jsx"
+  },
+  "resources/js/Pages/components/module/ProductCompany.jsx": {
+    "file": "assets/ProductCompany-953db6fa.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/ProductCompany.jsx"
+  },
+  "resources/js/Pages/components/module/ProductHomeCard.jsx": {
+    "file": "assets/ProductHomeCard-1bef88c4.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/ProductHomeCard.jsx"
+  },
+  "resources/js/Pages/components/module/ProductsCompany.jsx": {
+    "file": "assets/ProductsCompany-3e5d2533.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/CardProduct.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/ProductsCompany.jsx"
+  },
+  "resources/js/Pages/components/module/ProductsSideHome.jsx": {
+    "file": "assets/ProductsSideHome-a58c72e4.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/ProductsSideHome.jsx"
+  },
+  "resources/js/Pages/components/module/ReqCompany.jsx": {
+    "file": "assets/ReqCompany-31196600.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/ReqCompany.jsx"
+  },
+  "resources/js/Pages/components/module/SidebarHome.jsx": {
+    "file": "assets/SidebarHome-82e6792e.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/module/SidebarHome.jsx"
+  },
+  "resources/js/Pages/components/template/AboutSanatyar.jsx": {
+    "file": "assets/AboutSanatyar-1ce216ee.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/AboutSanatyar.jsx"
+  },
+  "resources/js/Pages/components/template/CompanyPage.jsx": {
+    "file": "assets/CompanyPage-c68c64f1.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/ReqCompany.jsx",
+      "resources/js/Pages/components/module/CategoryCompany.jsx",
+      "resources/js/Pages/components/module/CompanyDetail.jsx",
+      "resources/js/Pages/components/module/NavbarCompany.jsx",
+      "resources/js/Pages/components/module/CompanyCategorySide.jsx",
+      "resources/js/Pages/components/module/ProductCompany.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/CompanyPage.jsx"
+  },
+  "resources/js/Pages/components/template/CompanyPageMobile.jsx": {
+    "file": "assets/CompanyPageMobile-9d50a189.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/Explore.jsx",
+      "resources/js/Pages/components/module/CompanyProducts.jsx",
+      "resources/js/Pages/components/module/MobileNavbarCompany.jsx",
+      "resources/js/Pages/components/module/ProductsCompany.jsx",
+      "resources/js/Pages/components/module/AboutCompanyPage.jsx",
+      "resources/js/Pages/components/module/CallCompany.jsx",
+      "resources/js/Pages/components/module/CardProduct.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/CompanyPageMobile.jsx"
+  },
+  "resources/js/Pages/components/template/Home.jsx": {
+    "file": "assets/Home-4ed993c7.js",
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/Home.jsx"
+  },
+  "resources/js/Pages/components/template/HomePage.jsx": {
+    "file": "assets/HomePage-b99fe6f8.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/HomeNews.jsx",
+      "resources/js/Pages/components/module/HomeCategoryProducts.jsx",
+      "resources/js/Pages/components/module/CategoryNav.jsx",
+      "resources/js/Pages/components/module/CategoryMainHome.jsx",
+      "resources/js/Pages/components/module/ProductsSideHome.jsx",
+      "resources/js/Pages/components/module/HomeOption.jsx",
+      "resources/js/Pages/components/module/BestProducts.jsx",
+      "resources/js/Pages/components/module/ProductHomeCard.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/HomePage.jsx"
+  },
+  "resources/js/Pages/components/template/HomePageMbile.jsx": {
+    "file": "assets/HomePageMbile-6cc3ad40.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/MobileNavbarHome.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/HomePageMbile.jsx"
+  },
+  "resources/js/Pages/components/template/Product.jsx": {
+    "file": "assets/Product-f6b1b060.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/Product.jsx"
+  },
+  "resources/js/Pages/components/template/ProductPage.jsx": {
+    "file": "assets/ProductPage-b8b560b6.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "resources/js/Pages/components/module/CardProduct.jsx",
+      "resources/js/Pages/components/module/NavbarProduct.jsx"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/components/template/ProductPage.jsx"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-a808cea2.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.jsx": {
+    "css": [
+      "assets/app-a808cea2.css"
+    ],
+    "dynamicImports": [
+      "resources/js/Pages/Brands.jsx",
+      "resources/js/Pages/Home.jsx",
+      "resources/js/Pages/Home/Home.jsx",
+      "resources/js/Pages/Products.jsx",
+      "resources/js/Pages/SearchPage.jsx",
+      "resources/js/Pages/Welcome.jsx",
+      "resources/js/Pages/components/module/AboutCompanyPage.jsx",
+      "resources/js/Pages/components/module/BestProducts.jsx",
+      "resources/js/Pages/components/module/CallCompany.jsx",
+      "resources/js/Pages/components/module/CardProduct.jsx",
+      "resources/js/Pages/components/module/Category.jsx",
+      "resources/js/Pages/components/module/CategoryCompany.jsx",
+      "resources/js/Pages/components/module/CategoryMainHome.jsx",
+      "resources/js/Pages/components/module/CategoryNav.jsx",
+      "resources/js/Pages/components/module/CategorySide.jsx",
+      "resources/js/Pages/components/module/CompantCategorySide.jsx",
+      "resources/js/Pages/components/module/CompanyCategorySide.jsx",
+      "resources/js/Pages/components/module/CompanyDetail.jsx",
+      "resources/js/Pages/components/module/CompanyProducts.jsx",
+      "resources/js/Pages/components/module/Explore.jsx",
+      "resources/js/Pages/components/module/HomeCategoryProducts.jsx",
+      "resources/js/Pages/components/module/HomeNews.jsx",
+      "resources/js/Pages/components/module/HomeOption.jsx",
+      "resources/js/Pages/components/module/HomeProduct.jsx",
+      "resources/js/Pages/components/module/HomeReq.jsx",
+      "resources/js/Pages/components/module/MobileAboutSanat.jsx",
+      "resources/js/Pages/components/module/MobileCategory.jsx",
+      "resources/js/Pages/components/module/MobileCategoryNav.jsx",
+      "resources/js/Pages/components/module/MobileNavbarCompany.jsx",
+      "resources/js/Pages/components/module/MobileNavbarHome.jsx",
+      "resources/js/Pages/components/module/NavbarCompany.jsx",
+      "resources/js/Pages/components/module/NavbarProduct.jsx",
+      "resources/js/Pages/components/module/NavbarSearch.jsx",
+      "resources/js/Pages/components/module/ProductCompany.jsx",
+      "resources/js/Pages/components/module/ProductHomeCard.jsx",
+      "resources/js/Pages/components/module/ProductsCompany.jsx",
+      "resources/js/Pages/components/module/ProductsSideHome.jsx",
+      "resources/js/Pages/components/module/ReqCompany.jsx",
+      "resources/js/Pages/components/module/SidebarHome.jsx",
+      "resources/js/Pages/components/template/AboutSanatyar.jsx",
+      "resources/js/Pages/components/template/CompanyPage.jsx",
+      "resources/js/Pages/components/template/CompanyPageMobile.jsx",
+      "resources/js/Pages/components/template/Home.jsx",
+      "resources/js/Pages/components/template/HomePage.jsx",
+      "resources/js/Pages/components/template/HomePageMbile.jsx",
+      "resources/js/Pages/components/template/Product.jsx",
+      "resources/js/Pages/components/template/ProductPage.jsx"
+    ],
+    "file": "assets/app-d89f0d2f.js",
+    "isEntry": true,
+    "src": "resources/js/app.jsx"
+  }
+}
