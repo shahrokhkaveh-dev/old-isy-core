@@ -1,0 +1,12 @@
+{
+    "name": "ApiKeyManager",
+    "namespace": "App\\Modules\\ApiKeyManager",
+    "status": "active",
+    "version": "1.0.0",
+    "providers": [
+        "App\\Modules\\ApiKeyManager\\Providers\\ApiKeyManagerServiceProvider"
+    ],
+    "routes": [
+        "api"
+    ]
+}

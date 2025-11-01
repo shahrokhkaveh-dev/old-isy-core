@@ -1,0 +1,23 @@
+<?php
+return [
+    'productsAndBrands' => 'محصولات و خدمات',
+    'profile' => 'ناحیه کاربری',
+    'searchPlaceholder' => 'موتور جستجوگر محصولات و خدمات',
+    'aboutUs' => 'درباره ما',
+    'contactUs' => 'تماس با ما',
+    'help' => 'راهنمای خرید سرویس',
+    'festivals' => 'جشنواره ها و تخفیفات',
+    'internationalFestivals' => 'همایش های بین المللی',
+    'jobs' => 'فرصت های شغلی',
+    'searchResult' => 'نتایج جست و جو',
+    'newest' => 'تازه ها',
+    'moreviews' => 'پربازدید ها',
+    'oueSuggest' => 'پیشنهاد ما',
+    'isyBrandsTitle' => 'برند های صنعت یار',
+    'isyAccount' => 'حساب Sanatyar ',
+    'home' => 'خانه',
+    'brand' => 'برند',
+    'productSearchPlaceholder' => 'موتور جستجوگر محصولات و خدمات',
+    'brandSearchPlaceholder' => 'موتور جستجوگر صنایع ایران',
+    'AccessError' => 'سطح دسترسی محدود شده است ، برای مشاهده در سایت عضو شده و اشتراک ویژه تهیه فرمایید',
+];

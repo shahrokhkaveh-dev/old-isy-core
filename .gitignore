@@ -1,0 +1,8 @@
+vendor
+tests
+node_modules
+storage
+public
+.env
+.idea
+vite.config.js

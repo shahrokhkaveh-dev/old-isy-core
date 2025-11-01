@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class SliderResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'text' => $this->text,
+            'title_position' => $this->title_position,
+            'text_position' => $this->text_position,
+            'file' => $this->whenLoaded('file', function () {
+                return [
+                    'id' => $this->file->id,
+                    'url' => $this->file->url,
+                ];
+            }),
+        ];
+    }
+}

@@ -1,0 +1,23 @@
+<?php
+return [
+    'productsAndBrands' => 'المنتجات والخدمات',
+    'profile' => 'منطقة المستخدم',
+    'searchPlaceholder' => 'محرك بحث المنتجات والخدمات',
+    'aboutUs' => 'من نحن',
+    'contactUs' => 'اتصل بنا',
+    'help' => 'دليل شراء الخدمة',
+    'festivals' => 'المهرجانات والخصومات',
+    'internationalFestivals' => 'المؤتمرات الدولية',
+    'jobs' => 'فرص العمل',
+    'searchResult' => 'نتائج البحث',
+    'newest' => 'الأحدث',
+    'moreviews' => 'الأكثر مشاهدة',
+    'oueSuggest' => 'اقتراحنا',
+    'isyBrandsTitle' => 'علامات صنعت يار التجارية',
+    'isyAccount' => 'حساب Sanatyar',
+    'home' => 'الرئيسية',
+    'brand' => 'العلامة التجارية',
+    'productSearchPlaceholder' => 'محرك بحث المنتجات والخدمات',
+    'brandSearchPlaceholder' => 'محرك بحث صناعات إيران',
+    'AccessError' => 'مستوى الوصول محدود. للمشاهدة في الموقع، يرجى التسجيل وشراء اشتراك خاص.',
+];

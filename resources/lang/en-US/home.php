@@ -1,0 +1,23 @@
+<?php
+return [
+    'productsAndBrands' => 'Products and Services',
+    'profile' => 'User Area',
+    'searchPlaceholder' => 'Products and Services Search Engine',
+    'aboutUs' => 'About Us',
+    'contactUs' => 'Contact Us',
+    'help' => 'Service Purchase Guide',
+    'festivals' => 'Festivals and Discounts',
+    'internationalFestivals' => 'International Conferences',
+    'jobs' => 'Job Opportunities',
+    'searchResult' => 'Search Results',
+    'newest' => 'Newest',
+    'moreviews' => 'Most Viewed',
+    'oueSuggest' => 'Our Suggestion',
+    'isyBrandsTitle' => 'Sanatyar Brands',
+    'isyAccount' => 'Sanatyar Account',
+    'home' => 'Home',
+    'brand' => 'Brand',
+    'productSearchPlaceholder' => 'Products and Services Search Engine',
+    'brandSearchPlaceholder' => 'Iranian Industries Search Engine',
+    'AccessError' => 'Access level is restricted. To view, please register and purchase a special subscription.',
+];

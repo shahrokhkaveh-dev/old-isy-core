@@ -1,0 +1,23 @@
+<?php
+return [
+    'productsAndBrands' => 'Ürünler ve Hizmetler',
+    'profile' => 'Kullanıcı Alanı',
+    'searchPlaceholder' => 'Ürün ve Hizmet Arama Motoru',
+    'aboutUs' => 'Hakkımızda',
+    'contactUs' => 'Bize Ulaşın',
+    'help' => 'Hizmet Satın Alma Rehberi',
+    'festivals' => 'Festivaller ve İndirimler',
+    'internationalFestivals' => 'Uluslararası Konferanslar',
+    'jobs' => 'İş Fırsatları',
+    'searchResult' => 'Arama Sonuçları',
+    'newest' => 'En Yeniler',
+    'moreviews' => 'En Çok Görüntülenenler',
+    'oueSuggest' => 'Önerimiz',
+    'isyBrandsTitle' => 'Sanatyar Markaları',
+    'isyAccount' => 'Sanatyar Hesabı',
+    'home' => 'Ana Sayfa',
+    'brand' => 'Marka',
+    'productSearchPlaceholder' => 'Ürün ve Hizmet Arama Motoru',
+    'brandSearchPlaceholder' => 'İran Sanayileri Arama Motoru',
+    'AccessError' => 'Erişim seviyesi kısıtlanmıştır. Görüntülemek için lütfen siteye üye olun ve özel abonelik satın alın.',
+];

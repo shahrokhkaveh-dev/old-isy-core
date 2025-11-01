@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'main-font';
+}
+
+body {
+    background: #F0F1F2;
+
+}
+
+@layer base {
+
+    button,
+    input,
+    select {
+        @apply appearance-none bg-transparent outline-none;
+    }
+}
+
+@layer components {
+    .rowcompany {
+        @apply w-full flex flex-row justify-between my-3
+    }
+
+    .btnfilter {
+        @apply w-full py-4 bg-white flex flex-row-reverse items-end justify-between
+    }
+
+    .navbarLinks {
+        @apply text-nowrap md:py-4 py-2 transition-all cursor-pointer ease-in-out duration-200 aria-checked:border-b-2 border-blue-600 aria-checked:text-blue-600 md:text-lg lg:text-xl text-sm font-normal text-gray-700
+    }
+
+    .titletext {
+        @apply text-sm text-neutral-500 text-nowrap
+    }
+
+    .filterlitst {
+        @apply transition-all ease-in-out duration-200 hover:text-blue-500 text-sm text-neutral-500 mt-1
+    }
+
+
+}
+
+@media (min-width: 576px) {
+    ::-webkit-scrollbar {
+        width: 0px;
+        height: 5px;
+        background-color: #cfcfcf;
+
+
+    }
+
+
+    ::-webkit-scrollbar-track {
+        background: #cfcfcf;
+        backdrop-filter: brighness(5px);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        transition: background-color 0.3s;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    #scrool::-webkit-scrollbar {
+        display: none;
+    }
+
+}
