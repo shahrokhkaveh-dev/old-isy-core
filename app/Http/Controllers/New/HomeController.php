@@ -182,12 +182,17 @@ class HomeController extends Controller
     {
         $heroStats = Cache::remember('hero_stats', 3600, static function () {
             return [
-                'todayVisitors' => 524,
-//                'todayVisitors' => (new VisitRepository())->visitsTodayCount(),
+                'todayVisitors' => (new VisitRepository())->visitsTodayCount(),
                 'countBrands' => Brand::count(),
                 'countProducts' => Product::count(),
             ];
         });
+
+        $heroStats = [
+            'todayVisitors' => 524,
+            'countBrands' => 1399,
+            'countProducts' => 48002,
+        ];
 
         $heroCategories = $this->categoryRepository->homeCategories();
 
