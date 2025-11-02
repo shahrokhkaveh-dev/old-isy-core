@@ -14,6 +14,7 @@ use App\Repositories\VisitRepository;
 use App\Services\Application\ApplicationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -177,7 +178,7 @@ class HomeController extends Controller
         return ApplicationService::responseFormat(['data' => $data]);
     }
 
-    public function homePage2(): \Illuminate\Http\JsonResponse
+    public function homePage2()
     {
         $heroStats = Cache::remember('hero_stats', 3600, static function () {
             return [
@@ -195,9 +196,7 @@ class HomeController extends Controller
         if(getMode() === 'freezone'){
             $latestBrands = $latestBrands->whereNotNull('freezone_id');
         }
-        $latestBrands = $latestBrands->limit(10)
-            ->get();
-
+        $latestBrands = $latestBrands->limit(10)->get();
         foreach ($latestBrands as $key => $brand){
             unset(
                 $latestBrands[$key]['address'],
@@ -207,12 +206,25 @@ class HomeController extends Controller
                 $latestBrands[$key]['plan_name']);
         }
 
-
+        $mainCategories = $this->categoryRepository->getMainCategoryBrands(10);
+//        return $brands;
+        $grouped = collect([
+            0 => [8117],
+            1 => [6321, 5717, 7505, 8116],
+            2 => [1111, 2779, 4419, 4840],
+            3 => [3689, 3414, 6842, 8115],
+            4 => [6626, 2560, 4291, 5005, 6512, 7275],
+            5 => [2926, 326, 564, 858, 2365, 4007, 7020],
+        ]);
+        $mainCategories = $grouped->map(static function ($ids) use ($mainCategories) {
+           return $mainCategories->whereIn('id', $ids)->values();
+        });
 
         return ApplicationService::responseFormat(['data' => [
             'heroStats' => $heroStats,
             'heroCategories' => $heroCategories,
             'latestBrands' => $latestBrands,
+            'brands' => $mainCategories,
         ]]);
     }
 
