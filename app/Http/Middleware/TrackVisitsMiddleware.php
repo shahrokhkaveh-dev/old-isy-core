@@ -27,7 +27,7 @@ class TrackVisitsMiddleware
         $userAgent = $request->userAgent();
 
         //dont save visits from bots
-        if (!in_array($userAgent, $this->bots, true)) {
+        if (in_array($userAgent, $this->bots, true)) {
             return $next($request);
         }
 
