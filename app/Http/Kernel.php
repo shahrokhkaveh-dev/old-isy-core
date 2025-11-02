@@ -48,6 +48,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\SetRequestMode::class,
+            \App\Http\Middleware\TrackVisitsMiddleware::class,
         ],
         'application'=>[
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,

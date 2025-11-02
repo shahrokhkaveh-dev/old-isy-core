@@ -38,6 +38,7 @@ Route::get('explore',[\App\Http\Controllers\New\SearchController::class , 'explo
 
 Route::prefix('new')->middleware('setLocale')->group(function (){
     Route::get('/', [\App\Http\Controllers\New\HomeController::class, 'homePage']);
+    Route::get('/v2', [\App\Http\Controllers\New\HomeController::class, 'homePage2']);
     Route::get('/test', [\App\Http\Controllers\New\HomeController::class, 'homePage2']);
 
     Route::get('/explore', [\App\Http\Controllers\New\SearchController::class, 'explore']);

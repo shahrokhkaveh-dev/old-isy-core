@@ -4,13 +4,16 @@ namespace App\Http\Controllers\New;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\User\ProductController;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\Product;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Product\ProductRepository;
+use App\Repositories\VisitRepository;
 use App\Services\Application\ApplicationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -174,13 +177,48 @@ class HomeController extends Controller
         return ApplicationService::responseFormat(['data' => $data]);
     }
 
-    public function homePage2()
+    public function homePage2(): \Illuminate\Http\JsonResponse
     {
-        $targetCategories = Category::where('code', 'like', '18%')
-            ->orWhere('code', 'like', '14%')
-            ->pluck('id')
-            ->toArray();
-        dd($targetCategories);
+        $heroStats = Cache::remember('hero_stats', 3600, static function () {
+            return [
+                'todayVisitors' => (new VisitRepository())->visitsTodayCount(),
+                'countBrands' => Brand::count(),
+                'countProducts' => Product::count(),
+            ];
+        });
+
+        $heroCategories = $this->categoryRepository->homeCategories();
+
+        $latestBrands = Brand::latest()
+            ->with(['translation','category:id,name','province:id,name','city:name'])
+            ->select(['id','name', 'category_id', 'province_id', 'city_id', 'slug', 'logo_path']);
+        if(getMode() === 'freezone'){
+            $latestBrands = $latestBrands->whereNotNull('freezone_id');
+        }
+        $latestBrands = $latestBrands->limit(10)
+            ->get();
+
+        foreach ($latestBrands as $key => $brand){
+            unset(
+                $latestBrands[$key]['address'],
+                $latestBrands[$key]['description'],
+                $latestBrands[$key]['managment_name'],
+                $latestBrands[$key]['managment_position'],
+                $latestBrands[$key]['plan_name']);
+        }
+
+
+
+        return ApplicationService::responseFormat(['data' => [
+            'heroStats' => $heroStats,
+            'heroCategories' => $heroCategories,
+            'latestBrands' => $latestBrands,
+        ]]);
+    }
+
+    public function getCategoryBrands()
+    {
+
     }
 
     public function getCategories(): \Illuminate\Http\JsonResponse
