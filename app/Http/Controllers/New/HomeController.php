@@ -220,11 +220,92 @@ class HomeController extends Controller
            return $mainCategories->whereIn('id', $ids)->values();
         });
 
+        if (getMode() == 'freezone') {
+            $banners = [
+                asset('banner/baner1.webp'),
+                asset('banner/baner2.webp'),
+                asset('banner/baner3.webp'),
+                asset('banner/baner4.webp'),
+            ];
+            $brannerObjects = [
+                [
+                    'image_url' => asset('banner/baner1.webp'),
+                    'tap_url' => '#',
+                    'type' => 'general',
+                    'slug' => '#'
+                ],
+                [
+                    'image_url' => asset('banner/baner2.webp'),
+                    'tap_url' => '#',
+                    'type' => 'general',
+                    'slug' => '#'
+                ],
+                [
+                    'image_url' => asset('banner/baner3.webp'),
+                    'tap_url' => '#',
+                    'type' => 'general',
+                    'slug' => '#'
+                ],
+                [
+                    'image_url' => asset('banner/baner4.webp'),
+                    'tap_url' => '#',
+                    'type' => 'general',
+                    'slug' => '#'
+                ],
+            ];
+        } else {
+            $banners = [
+                asset("banner/1984080317.png"),
+                asset("banner/1984080319.png"),
+                asset("banner/1984080321.png"),
+                asset("banner/1984080323.png"),
+                // asset("banner/b1.jpg"),
+                // asset("banner/b2.jpg"),
+                // asset("banner/b3.jpg"),
+            ];
+            $brannerObjects = [
+                [
+                    'image_url' => asset('banner/Frame1984080326shahanmes.png'),
+                    'tap_url' => '#',
+                    'type' => 'general',
+                    'slug' => '#'
+                ],
+                [
+                    'image_url' => asset('banner/1984080323.png'),
+                    'tap_url' => 'https://sanatyariran.com',
+                    'type' => 'brandAds',
+                    'slug' => 'ره-روشن-آفتاب-پارس'
+                ],
+                [
+                    'image_url' => asset('banner/1984080321.png'),
+                    'tap_url' => 'https://sanatyariran.com',
+                    'type' => 'brandAds',
+                    'slug' => 'شرکت-مجتمع-تولید-لوله-و-اتصالات-پلیمر-یاس'
+                ],
+                [
+                    'image_url' => asset('banner/1984080319.png'),
+                    'tap_url' => 'https://sanatyariran.com',
+                    'type' => 'brandAds',
+                    'slug' => 'آریا-پک-مهر'
+                ],
+                [
+                    'image_url' => asset('banner/1984080317.png'),
+                    'tap_url' => 'https://sanatyariran.com',
+                    'type' => 'brandAds',
+                    'slug' => 'مواد-مهندسی-رنگین-رزین-اسپید'
+                ],
+            ];
+        }
+
         return ApplicationService::responseFormat(['data' => [
             'heroStats' => $heroStats,
             'heroCategories' => $heroCategories,
             'latestBrands' => $latestBrands,
             'brands' => $mainCategories,
+            'ads' => [
+                'banners' => $banners,
+                'bannerObjects' => $brannerObjects,
+            ]
         ]]);
     }
 

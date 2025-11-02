@@ -113,6 +113,7 @@ class CategoryRepository extends BaseRepository
             ->leftJoin('brand_translates', function ($join) use ($currentLocale) {
                 $join->on('brand_translates.brand_id', '=', 'brands.id')
                     ->where('brand_translates.locale', $currentLocale);
+
             })
             ->leftJoin('cities', 'brands.city_id', '=', 'cities.id')
             ->leftJoin('city_translates', function ($join) use ($currentLocale) {
@@ -124,6 +125,10 @@ class CategoryRepository extends BaseRepository
                 $join->on('provinces.id', '=', 'province_translates.province_id')
                     ->where('province_translates.locale', '=', $currentLocale);
             });
+
+        if(getMode() === 'freezone'){
+            $brandsSubQuery->whereNotNull('brands.freezone_id');
+        }
 
         $flatResult = Category::whereNull('parent_id')
             ->select([
