@@ -188,11 +188,11 @@ class HomeController extends Controller
             ];
         });
 
-        $heroStats = [
-            'todayVisitors' => 524,
-            'countBrands' => 1399,
-            'countProducts' => 48002,
-        ];
+//        $heroStats = [
+//            'todayVisitors' => 524,
+//            'countBrands' => 1399,
+//            'countProducts' => 48002,
+//        ];
 
         $heroCategories = $this->categoryRepository->homeCategories();
 
