@@ -459,7 +459,7 @@ class SearchController extends Controller
                 ]
             ],
             'brands' => $brands,
-            'resultFor' => $search ?? ($selectedCategory?->name)
+            'resultFor' => $search ?? ($selectedCategory?->toArray()['name'])
         ];
 
         return ApplicationService::responseFormat(['data' => $data]);
