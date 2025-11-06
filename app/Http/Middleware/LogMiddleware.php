@@ -47,7 +47,7 @@ class LogMiddleware
                 'output' => null,
                 'route' => $request->path(),
                 'http_method' => $route->methods()[0],
-                'referer'=> parse_url($request->headers->get('referer'))['host']
+                'referer'=> $request->headers->has('referer') ? parse_url($request->headers->get('referer'))['host'] : 'App',
             ]);
         }
         return $next($request);
