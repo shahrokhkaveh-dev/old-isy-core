@@ -152,7 +152,7 @@ class CategoryRepository extends BaseRepository
             ->where(function (Builder $query) use ($limit) {
                 $query->whereNull('ranked_brands.id')
                     ->orWhere('ranked_brands.rn','<=',  $limit);
-            })->get();
+            })->inRandomOrder()->get();
 
         $structuredCategories = $flatResult->groupBy('id')->map(function ($categoryGroup) {
             $category = $categoryGroup->first();
