@@ -32,23 +32,32 @@ class LogMiddleware
             'panel/automationSystem/addBrandToGroup'
         ];
         if ($route->methods()[0] != 'GET' && !in_array( $request->path() , $exep)) {
-            $user_id = Auth::user() ? Auth::user()->id : null;
-            $method = $route->getActionMethod();
-            $action = explode('//' , $route->getActionName());
-            $controller = substr(end($action) , 0 , strpos(end($action) , '@'));
-            $log = Log::create([
-                'user_id' => $user_id,
-                'ip' => $request->ip(),
-                'mac' => 0,
-                'agent' => $request->server('HTTP_USER_AGENT'),
-                'controller' =>  $controller,
-                'method' => $method,
-                'input' => $request->getContent(),
-                'output' => null,
-                'route' => $request->path(),
-                'http_method' => $route->methods()[0],
-                'referer'=> $request->headers->has('referer') ? parse_url($request->headers->get('referer'))['host'] : 'App',
-            ]);
+            try {
+                $user_id = Auth::user() ? Auth::user()->id : null;
+                $method = $route->getActionMethod();
+                $action = explode('//' , $route->getActionName());
+                $controller = substr(end($action) , 0 , strpos(end($action) , '@'));
+                $log = Log::create([
+                    'user_id' => $user_id,
+                    'ip' => $request->ip(),
+                    'mac' => 0,
+                    'agent' => $request->server('HTTP_USER_AGENT'),
+                    'controller' =>  $controller,
+                    'method' => $method,
+                    'input' => $request->getContent(),
+                    'output' => null,
+                    'route' => $request->path(),
+                    'http_method' => $route->methods()[0],
+                    'referer'=> $request->headers->has('referer') ? parse_url($request->headers->get('referer'))['host'] : 'App',
+                ]);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error("Error: " . $e->getMessage() . PHP_EOL
+                    . "File: " . $e->getFile()  . PHP_EOL
+                    . "Line: " . $e->getLine()  . PHP_EOL
+                    . "Code: " . $e->getCode() . PHP_EOL
+                    . "Trace: " . $e->getTraceAsString() . PHP_EOL
+                );
+            }
         }
         return $next($request);
     }
