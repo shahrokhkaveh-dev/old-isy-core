@@ -40,7 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Localization::class,
             \App\Http\Middleware\HttpsMiddlware::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\LogMiddleware::class
+            \App\Http\Middleware\LogMiddleware::class,
         ],
 
         'api' => [
@@ -49,11 +49,13 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\SetRequestMode::class,
             \App\Http\Middleware\TrackVisitsMiddleware::class,
+            \App\Http\Middleware\LogMiddleware::class,
         ],
         'application'=>[
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
            // \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\LogMiddleware::class,
         ]
     ];
 
