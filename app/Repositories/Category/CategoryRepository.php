@@ -124,7 +124,7 @@ class CategoryRepository extends BaseRepository
             ->leftJoin('province_translates', function ($join) use ($currentLocale) {
                 $join->on('provinces.id', '=', 'province_translates.province_id')
                     ->where('province_translates.locale', '=', $currentLocale);
-            });
+            })->inRandomOrder();
 
         if(getMode() === 'freezone'){
             $brandsSubQuery->whereNotNull('brands.freezone_id');
@@ -152,7 +152,7 @@ class CategoryRepository extends BaseRepository
             ->where(function (Builder $query) use ($limit) {
                 $query->whereNull('ranked_brands.id')
                     ->orWhere('ranked_brands.rn','<=',  $limit);
-            })->inRandomOrder()->get();
+            })->get();
 
         $structuredCategories = $flatResult->groupBy('id')->map(function ($categoryGroup) {
             $category = $categoryGroup->first();
