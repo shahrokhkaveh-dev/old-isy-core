@@ -44,7 +44,7 @@ class CategoryRepository extends BaseRepository
                 'childs.childs:id,name,code,parent_id',
             ])
             ->select(['id', 'name', 'code', 'parent_id'])
-            ->offset(17)
+            ->offset(15)
             ->limit(15)
             ->get();
         return ['main' => $mainCategories, 'more' => $moreCategories];
