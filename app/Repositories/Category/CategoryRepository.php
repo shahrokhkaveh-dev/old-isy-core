@@ -36,7 +36,7 @@ class CategoryRepository extends BaseRepository
                 'childs.childs:id,name,code,parent_id',
             ])
             ->select(['id', 'name', 'code', 'parent_id'])
-            ->limit(15)
+            ->limit(17)
             ->get();
         $moreCategories = $this->model->whereNull('parent_id')
             ->with([
@@ -44,7 +44,7 @@ class CategoryRepository extends BaseRepository
                 'childs.childs:id,name,code,parent_id',
             ])
             ->select(['id', 'name', 'code', 'parent_id'])
-            ->offset(15)
+            ->offset(17)
             ->limit(15)
             ->get();
         return ['main' => $mainCategories, 'more' => $moreCategories];
