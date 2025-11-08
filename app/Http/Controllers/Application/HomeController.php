@@ -25,37 +25,31 @@ class HomeController extends Controller
         if (getMode() == "freezone") {
             $slider = [
                 [
-                    'image_url' => 'banner/notext1.png',
+                    'image_url' => 'freezonebanners/aras.png',
                     'tap_url' => '#',
                     'type' => 'general',
                     'slug' => '#'
                 ],
                 [
-                    'image_url' => 'banner/notext2.png',
+                    'image_url' => 'freezonebanners/arvand.png',
                     'tap_url' => '#',
                     'type' => 'general',
                     'slug' => '#'
                 ],
                 [
-                    'image_url' => 'banner/notext3.png',
+                    'image_url' => 'freezonebanners/chabahar.png',
                     'tap_url' => '#',
                     'type' => 'general',
                     'slug' => '#'
                 ],
                 [
-                    'image_url' => 'banner/notext4.png',
+                    'image_url' => 'freezonebanners/kish.png',
                     'tap_url' => '#',
                     'type' => 'general',
                     'slug' => '#'
                 ],
                 [
-                    'image_url' => 'banner/notext5.png',
-                    'tap_url' => '#',
-                    'type' => 'general',
-                    'slug' => '#'
-                ],
-                [
-                    'image_url' => 'banner/notext6.png',
+                    'image_url' => 'freezonebanners/qeshm.png',
                     'tap_url' => '#',
                     'type' => 'general',
                     'slug' => '#'
