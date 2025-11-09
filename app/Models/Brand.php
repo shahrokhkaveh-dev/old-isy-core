@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static find(mixed $decrypt)
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Brand extends Model
 {
-    use HasFactory , Sluggable, HasTranslations;
+    use HasFactory , Sluggable, HasTranslations, SoftDeletes;
 
     protected $fillable = [
         'personels_count', 'province_id', 'city_id','ipark_id','freezone_id', 'name', 'nationality_code', 'economic_code',
