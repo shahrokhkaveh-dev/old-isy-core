@@ -110,6 +110,7 @@ class CategoryRepository extends BaseRepository
                 DB::raw("COALESCE(brand_translates.name, brands.name) as brand_name"),
                 DB::raw('ROW_NUMBER() OVER (PARTITION BY brands.category_id ORDER BY brands.id DESC) as rn')
             ])
+            ->whereNotNull('deleted_at')
             ->whereNotNull('category_id')
             ->leftJoin('brand_translates', function ($join) use ($currentLocale) {
                 $join->on('brand_translates.brand_id', '=', 'brands.id')
