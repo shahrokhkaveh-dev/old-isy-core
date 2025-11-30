@@ -438,13 +438,13 @@ class ProductController extends Controller
                     )
                     : null,
                 'prefactor_path' => $inquiry['prefactor_path'],
-                'author' => $inquiry['author']['name'],
+                'author' => $inquiry['author']['name'] ?? null,
                 'responser' => $inquiry['responser']['name'] ?? null,
-                'product_name' => $inquiry['product']['name'],
-                'product_slug' => $inquiry['product']['slug'],
-                'product_image' => $inquiry['product']['image'],
-                'brand_name' => $inquiry['brand']['name'],
-                'brand_slug' => $inquiry['brand']['slug'],
+                'product_name' => $inquiry['product']['name'] ?? null,
+                'product_slug' => $inquiry['product']['slug'] ?? null,
+                'product_image' => $inquiry['product']['image'] ?? null,
+                'brand_name' => $inquiry['brand']['name'] ?? null,
+                'brand_slug' => $inquiry['brand']['slug'] ?? null,
             ],
             $inquiriesArray
         );
