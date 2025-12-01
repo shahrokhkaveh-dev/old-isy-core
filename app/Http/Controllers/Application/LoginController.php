@@ -7,6 +7,7 @@ use App\Models\FirebaseToken;
 use App\Models\Token;
 use App\Models\User;
 use App\Services\Application\ApplicationService;
+use App\Services\Notifications\EmailService;
 use App\Services\Notifications\SMSPattern;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,35 +19,52 @@ class LoginController extends Controller
     {
         // dd(app()->getLocale());
         $messages = [
-            'phone.required' => __('messages.phone_required'),
+            'phone.required_without' => __('messages.mobile_or_email_required'),
             'phone.ir_mobile' => __('messages.invalid_mobile'),
+            'email.required_without' => __('messages.mobile_or_email_required'),
+            'email.email' => __('messages.invalid_email'),
         ];
 
         \request()->validate([
-            'phone' => 'required|ir_mobile'
+            'phone' => 'required_without:email|ir_mobile',
+            'email' => 'required_without:phone|email',
         ], $messages);
 
-        $phone = \request()->input('phone');
-        $user = DB::table('users')->where('phone', $phone)->first();
+        $phone = \request()->input('phone', null);
+        $email = \request()->input('email', null);
+        $user = User::query()
+            ->when($email, fn ($q) => $q->where('phone', $phone))
+            ->when($email, fn ($q) => $q->where('email', $email))
+            ->first();
 
         if (!$user) {
             return ApplicationService::responseFormat([], false, __('messages.user_not_found'), -2);
         }
 
-        $token = Token::where('phone', $phone)->latest()->first();
+        $token = Token::query()
+            ->when($phone, fn ($q) => $q->where('phone', $phone))
+            ->when($email, fn ($q) => $q->where('email', $email))
+            ->latest()
+            ->first();
         $code = rand(1000, 9999);
 
         if (($token && $token->expired_time < Carbon::now()) || !$token) {
             DB::table('tokens')->insert([
                 'phone' => $phone,
+                'email' => $email,
                 'code' => $code,
                 'expired_time' => Carbon::now()->addMinutes(2),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
 
-            SMSPattern::sendOtp($phone, $code);
-            return ApplicationService::responseFormat([], true, __('messages.sms_sent'));
+            if($phone) {
+                SMSPattern::sendOtp($phone, $code);
+                return ApplicationService::responseFormat([], true, __('messages.sms_sent'));
+            } else {
+                EmailService::sendOtp($email, $code, 'login', app()->getLocale(), getMode() === 'freezone');
+                return ApplicationService::responseFormat([], true, __('messages.email_sent'));
+            }
         }
 
         return ApplicationService::responseFormat([], false, __('messages.sms_not_sent'), -3);
@@ -66,11 +84,13 @@ class LoginController extends Controller
         ];
 
         \request()->validate([
-            'phone' => 'required|ir_mobile',
+            'phone' => 'required_without:email|ir_mobile',
+            'email' => 'required_without:phone|email',
             'code' => 'required|numeric|min:1000|max:9999'
         ], $messages);
 
         $phone = \request()->input('phone');
+        $email = \request()->input('email');
         $firebaseToken = \request()->input('firebase_token');
         // $user = User::where('phone', $phone)->first();
         $user = User::with([
@@ -85,14 +105,19 @@ class LoginController extends Controller
                 ]);
             }
         ])
-        ->where('phone', $phone)
-        ->first();
+            ->when($phone, fn($q) => $q->where('phone', $phone))
+            ->when($email, fn($q) => $q->where('email', $email))
+            ->first();
 
         if (!$user) {
             return ApplicationService::responseFormat([], false, __('messages.user_not_found'));
         }
 
-        $token = Token::where('phone', $phone)->latest()->first();
+        $token = Token::query()
+            ->when($phone, fn($q) => $q->where('phone', $phone))
+            ->when($email, fn($q) => $q->where('email', $email))
+            ->latest()
+            ->first();
 
         if ($token->code != \request()->input('code')) {
             return ApplicationService::responseFormat([], false, __('messages.invalid_code'));

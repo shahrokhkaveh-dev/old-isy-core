@@ -9,6 +9,7 @@ use App\Models\Document;
 use App\Models\Permission;
 use App\Models\Province;
 use App\Services\Application\ApplicationService;
+use App\Services\Notifications\EmailService;
 use App\Services\Notifications\SMSPattern;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -21,45 +22,78 @@ class RegisterController extends Controller
 {
     public function register(Request $request): \Illuminate\Http\JsonResponse
     {
-        $phone = $request->input('phone');
-        if (empty($phone) || !preg_match('/^(\\+98|0)?9\\d{9}$/', $phone)) {
+        $phone = $request->input('phone', null);
+        $email = $request->input('email', null);
+        if(empty($phone) && empty($email)) {
+            return ApplicationService::responseFormat([], false, __('messages.mobile_or_email_required'), -1);
+        }
+        if (!empty($phone) && !preg_match('/^(\\+98|0)?9\\d{9}$/', $phone)) {
             return ApplicationService::responseFormat([], false, __('messages.invalid_mobile_number'), -1);
         }
-        $userCheck = User::where('phone', $phone)->first();
+        if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return ApplicationService::responseFormat([], false, __('messages.invalid_email'), -1);
+        }
+        $userCheck = User::query()
+            ->when($phone, fn($q) => $q->where('phone', $phone))
+            ->when($email, fn($q) => $q->where('email', $email))
+            ->first();
         if ($userCheck) {
             return ApplicationService::responseFormat([], false, __('messages.user_already_exists'), -2);
         }
         $code = rand(1000, 9999);
-        $token = Token::where('phone', $phone)->latest()->first();
+        $token = Token::query()
+            ->when($phone, fn($q) => $q->where('phone', $phone))
+            ->when($email, fn($q) => $q->where('email', $email))
+            ->latest()
+            ->first();
         if ($token && !$token->isExpired()) {
             return ApplicationService::responseFormat([], false, __('messages.code_already_sent'), -3);
         }
         $token = Token::create([
             'phone' => $phone,
+            'email' => $email,
             'code' => $code,
             'expired_time' => Carbon::now()->addMinutes(2)
         ]);
-        SMSPattern::sendOtp($phone, $code);
-        return ApplicationService::responseFormat([], true, __('messages.code_sent_successfully'));
+        if($phone) {
+            SMSPattern::sendOtp($phone, $code);
+            return ApplicationService::responseFormat([], true, __('messages.sms_sent'));
+        } else {
+            EmailService::sendOtp($email, $code, 'register', app()->getLocale(), getMode() === 'freezone');
+            return ApplicationService::responseFormat([], true, __('messages.email_sent'));
+        }
     }
 
     public function doRegister(Request $request): \Illuminate\Http\JsonResponse
     {
-        $phone = $request->input('phone');
-        if (empty($phone) || !preg_match('/^(\\+98|0)?9\\d{9}$/', $phone)) {
-            return ApplicationService::responseFormat([], false, __('messages.invalid_mobile_number'));
+        $phone = $request->input('phone', null);
+        $email = $request->input('email', null);
+        if(empty($phone) && empty($email)) {
+            return ApplicationService::responseFormat([], false, __('messages.mobile_or_email_required'), -1);
+        }
+        if (!empty($phone) && !preg_match('/^(\\+98|0)?9\\d{9}$/', $phone)) {
+            return ApplicationService::responseFormat([], false, __('messages.invalid_mobile_number'), -1);
+        }
+        if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return ApplicationService::responseFormat([], false, __('messages.invalid_email'), -1);
         }
         $code = $request->input('code');
         if (empty($code) || !is_numeric($code) || $code < 1000 || $code > 9999) {
             return ApplicationService::responseFormat([], false, __('messages.invalid_code'));
         }
-        $user = User::where('phone', $phone)
-        ->when($request->input('nationality_code'),function ($q) use ($request) {return $q->where('nationality_code',$request->input('nationality_code'));})
-        ->first();
+        $user = User::query()
+            ->when($phone, fn($q) => $q->where('phone', $phone))
+            ->when($email, fn($q) => $q->where('email', $email))
+            ->when($request->input('nationality_code'),function ($q) use ($request) {return $q->where('nationality_code',$request->input('nationality_code'));})
+            ->first();
         if ($user) {
             return ApplicationService::responseFormat([], false, __('messages.user_already_exists'));
         }
-        $token = Token::where('phone', $request->input('phone'))->latest()->first();
+        $token = Token::query()
+            ->when($phone, fn($q) => $q->where('phone', $phone))
+            ->when($email, fn($q) => $q->where('email', $email))
+            ->latest()
+            ->first();
         if (!$token) {
             return ApplicationService::responseFormat([], false, __('messages.invalid_code'));
         }
@@ -91,6 +125,7 @@ class RegisterController extends Controller
             'last_name' => $last_name,
             'name' => $first_name . ' ' . $last_name,
             'phone' => $phone,
+            'email' => $email,
             'is_branding' => false,
             'brand_id' => null,
             'province_id' => $province_id,

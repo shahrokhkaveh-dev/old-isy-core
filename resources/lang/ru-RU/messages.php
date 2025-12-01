@@ -92,4 +92,6 @@ return [
     'invalid_province' => 'Неверная провинция',
     'invalid_city' => 'Неверный город',
     'registration_successful' => 'Регистрация прошла успешно',
+    'invalid_email' => 'Неверный адрес электронной почты',
+    'email_sent' => 'Письмо отправлено',
 ];

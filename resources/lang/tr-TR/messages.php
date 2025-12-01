@@ -89,4 +89,6 @@ return [
     'invalid_province' => 'Geçersiz il',
     'invalid_city' => 'Geçersiz şehir',
     'registration_successful' => 'Kayıt başarılı',
+    'invalid_email' => 'Geçersiz e-posta',
+    'email_sent' => 'E-posta gönderildi',
 ];

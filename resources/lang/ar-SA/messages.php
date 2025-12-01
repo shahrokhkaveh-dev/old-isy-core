@@ -89,4 +89,6 @@ return [
     'invalid_province' => 'المقاطعة غير صالحة',
     'invalid_city' => 'المدينة غير صالحة',
     'registration_successful' => 'تم التسجيل بنجاح',
+    'invalid_email' => 'البريد الإلكتروني غير صالح',
+    'email_sent' => 'تم إرسال البريد الإلكتروني',
 ];

@@ -1,0 +1,23 @@
+<?php
+return [
+    'productsAndBrands' => '产品与服务',
+    'profile' => '个人中心',
+    'searchPlaceholder' => '搜索产品与服务',
+    'aboutUs' => '关于我们',
+    'contactUs' => '联系我们',
+    'help' => '服务购买指南',
+    'festivals' => '优惠活动',
+    'internationalFestivals' => '国际会议',
+    'jobs' => '工作机会',
+    'searchResult' => '搜索结果',
+    'newest' => '最新',
+    'moreviews' => '浏览最多',
+    'oueSuggest' => '我们的推荐',
+    'isyBrandsTitle' => 'Sanatyar 品牌',
+    'isyAccount' => 'Sanatyar 账户',
+    'home' => '首页',
+    'brand' => '品牌',
+    'productSearchPlaceholder' => '搜索产品与服务',
+    'brandSearchPlaceholder' => '搜索伊朗工业',
+    'AccessError' => '访问受限。如需查看，请注册并购买专属订阅。',
+];

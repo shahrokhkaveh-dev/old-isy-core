@@ -89,4 +89,6 @@ return [
     'invalid_province' => 'Invalid province',
     'invalid_city' => 'Invalid city',
     'registration_successful' => 'Registration successful',
+    'invalid_email' => 'Invalid email',
+    'email_sent' => 'Email sent',
 ];

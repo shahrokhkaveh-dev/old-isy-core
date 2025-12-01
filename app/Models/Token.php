@@ -12,6 +12,7 @@ class Token extends Model
 
     protected $fillable = [
         'phone',
+        'email',
         'code',
         'expired_time',
         'used',

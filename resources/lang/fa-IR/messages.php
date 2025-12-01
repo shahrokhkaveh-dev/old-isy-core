@@ -90,4 +90,7 @@ return [
     'invalid_province' => 'استان نامعتبر است',
     'invalid_city' => 'شهر نامعتبر است',
     'registration_successful' => 'ثبت نام با موفقیت انجام شد',
+    'mobile_or_email_required' => 'شماره موبایل یا ایمیل الزامی است',
+    'invalid_email' => 'ایمیل نامعتبر است',
+    'email_sent' => 'ایمیل ارسال شد',
 ];
