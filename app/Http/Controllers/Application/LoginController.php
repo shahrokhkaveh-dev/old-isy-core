@@ -33,7 +33,7 @@ class LoginController extends Controller
         $phone = \request()->input('phone', null);
         $email = \request()->input('email', null);
         $user = User::query()
-            ->when($email, fn ($q) => $q->where('phone', $phone))
+            ->when($phone, fn ($q) => $q->where('phone', $phone))
             ->when($email, fn ($q) => $q->where('email', $email))
             ->first();
 
