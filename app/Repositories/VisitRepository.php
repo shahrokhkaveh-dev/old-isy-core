@@ -24,6 +24,11 @@ class VisitRepository
         return Visit::where('created_at', '>=', now()->subDays($subDays))->count();
     }
 
+    public function totalVisitsCount(): int
+    {
+        return Visit::query()->count();
+    }
+
     public function visitsTodayCount(): int
     {
         return Visit::today()->count();
