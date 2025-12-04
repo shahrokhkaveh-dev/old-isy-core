@@ -177,4 +177,6 @@ Route::middleware('setLocale')->group(function () {
     });
 
     Route::get('/sliders/{sliderId}/slides', [SliderController::class, 'getSlides']);
+
+    Route::get('freezones/brands/main', [\App\Http\Controllers\Application\FreezoneController::class, 'mainBrands']);
 });
