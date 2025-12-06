@@ -4,6 +4,7 @@ namespace App\Http\Controllers\New;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\BrandType;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Freezone;
@@ -384,12 +385,14 @@ class SearchController extends Controller
         $cityId = $request->input('city', null);
         $iparkId = $request->input('ipark', null);
         $freezoneId = $request->input('freezone', null);
+        $type = $request->input('type', null);
 
         $categories = Category::query()->whereNull('parent_id')->get(['name', 'id', 'code']);
         $provinces = Province::all(['name', 'id']);
 
         $selectedCategory = $categoryId ? Category::query()->find($categoryId) : null;
         $selectedProvince = $provinceId ? Province::query()->find($provinceId) : null;
+        $selectedType = $type ? BrandType::query()->find($type) : null;
         $selectedCity = !is_null($cityId) && $cityId > -1 ? City::query()->find($cityId) : null;
         $selectedIpark = $iparkId ? Ipark::query()->find($iparkId) : null;
         $selectedFreezone = $freezoneId ? Freezone::query()->find($freezoneId) : null;
@@ -403,6 +406,8 @@ class SearchController extends Controller
             ->selectRaw("CONCAT('" . asset('') . "', logo_path) as logo_path")
             ->with([
                 'category:id,name',
+                'categories:id,name',
+                'brandTypes:id,name',
                 'province:id,name',
                 'city:id,name'
             ])
@@ -421,7 +426,9 @@ class SearchController extends Controller
             ->when($iparkId, fn($query) => $query->where('ipark_id', $iparkId))
             ->when($freezoneId, fn($query) => $query->where('freezone_id', $freezoneId))
             ->when(getMode() == 'freezone', fn($query) => $query->whereNotNull('freezone_id'))
-            ->when($selectedCategory, fn($query) => $query->where('category_id', $selectedCategory->id))
+            //->when($selectedCategory, fn($query) => $query->where('category_id', $selectedCategory->id))
+            ->when($selectedCategory, fn($q) => $q->whereHas('categories', fn($q1) => $q1->where('categories.id', $selectedCategory->id)))
+            ->when($selectedType, fn($q) => $q->whereHas('brandTypes', fn($q1) => $q1->where('brand_types.id', $selectedType->id)))
             ->orderBy('created_at', 'desc')
             ->paginate($brandsPerPage)
             ->withQueryString();
@@ -451,6 +458,7 @@ class SearchController extends Controller
                 'freezone' => $freezones,
                 'selectedFilters' => [
                     'category' => $selectedCategory ? ['label' => __('dictionary.category'), 'param' => 'category', 'value' => $selectedCategory->toArray()['name']] : null,
+                    'type' => $selectedType ? ['label' => __('dictionary.type'), 'param' => 'type', 'value' => $selectedType->toArray()['name']] : null,
                     'province' => $selectedProvince ? ['label' => __('dictionary.province'), 'param' => 'province', 'value' => $selectedProvince->toArray()['name']] : null,
                     'city' => $selectedCity ? ['label' => __('dictionary.city'), 'param' => 'city', 'value' => $selectedCity->toArray()['name']] : null,
                     'freezone' => $selectedFreezone ? ['label' => __('dictionary.freezone'), 'param' => 'freezone', 'value' => $selectedFreezone->toArray()['name']] : null,

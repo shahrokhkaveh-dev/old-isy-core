@@ -197,7 +197,7 @@ class HomeController extends Controller
         $heroCategories = $this->categoryRepository->homeCategories();
 
         $latestBrands = Brand::latest()
-            ->with(['translation','category:id,name','province:id,name','city:name'])
+            ->with(['translation','category:id,name','categories:id,name','province:id,name','city:name'])
             ->select(['id','name', 'category_id', 'province_id', 'city_id', 'slug', 'logo_path']);
         if(getMode() === 'freezone'){
             $latestBrands = $latestBrands->whereNotNull('freezone_id');

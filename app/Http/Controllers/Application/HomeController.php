@@ -588,6 +588,8 @@ class HomeController extends Controller
                     $query->select('id', 'name');
                 },
                 'category.translation',
+                'categories' => fn($q) => $q->select('id', 'name')->with(['translation:brand_id,name']),
+                'brandTypes' => fn($q) => $q->select('id', 'name')->with(['translation:brand_type_id,name']),
                 'products' => function ($query) {
                     $query->select('id', 'brand_id', 'name', 'image', 'slug');
                 },
@@ -616,6 +618,16 @@ class HomeController extends Controller
             $data['brand']['city'] = $brand->city ? ($brand->city->translation->name ?? $brand->city->name) : null;
             $data['brand']['ipark'] = $brand->ipark ? ($brand->ipark->translation->name ?? $brand->ipark->name) : null;
             $data['brand']['category'] = $brand->category ? ($brand->category->translation->name ?? $brand->category->name) : null;
+
+            $data['brand']['categories'] = [];
+            foreach ($brand->categories as $category) {
+                $data['brand']['categories'][] = $category->translation->name ?? $category->name;
+            }
+
+            $data['brand']['brandTypes'] = [];
+            foreach ($brand->brandTypes as $type) {
+                $data['brand']['brandTypes'][] = $type->translation->name ?? $type->name;
+            }
 
             // Handle brand images
             $data['images'] = $brand->brandImages ? $brand->brandImages->toArray() : [];
@@ -741,19 +753,22 @@ class HomeController extends Controller
             'brandType:id,name'
         ])
             ->where('vip_expired_time', '>=', Carbon::now())
-            ->where('category_id', '!=', null);
+            ->has('categories');
+            //->where('category_id', '!=', null);
 
         $query->when(getMode() == 'freezone', fn($q) => $q->whereNotNull('freezone_id'))
             ->when($search, fn($q) => $q->where(
                 fn($q1) => $q1->where('name', 'LIKE', "%{$search}%")
                 ->orWhereHas('translation', fn($q2) => $q2->where('name', 'LIKE', "%{$search}%"))
             ))
-            ->when($category, fn($q) => $q->where('category_id', $category))
+            //->when($category, fn($q) => $q->where('category_id', $category))
+            ->when($category, fn($q) => $q->whereHas('categories', fn($q1) => $q1->where('categories.id', $category)))
             ->when($province, fn($q) => $q->where('province_id', $province))
             ->when($city !== null && $city > -1, fn($q) => $q->where('city_id', $city))
             ->when($ipark, fn($q) => $q->where('ipark_id', $ipark))
             ->when($freezone, fn($q) => $q->where('freezone_id', $freezone))
-            ->when($type, fn($q) => $q->where('type', $type));
+            //->when($type, fn($q) => $q->where('type', $type));
+            ->when($type, fn($q) => $q->whereHas('brandTypes', fn($q1) => $q1->where('brand_types.id', $type)));
 
         if ($sortColumn) {
             $query->orderBy($sortColumn, $sortOrder);
@@ -787,7 +802,19 @@ class HomeController extends Controller
                 'description' => $brand?->translation->description ?? $brand->description,
                 'managment_name' => $brand?->translation->managment_name ?? $brand->managment_name,
                 'managment_position' => $brand?->translation->managment_position ?? $brand->managment_position,
-                'plan_name' => $brand->plan_name
+                'plan_name' => $brand->plan_name,
+                'categories' => $brand->categories->map(function ($category) {
+                    return [
+                        'id' => $category->id,
+                        'name' => $category->translation->name ?? $category->name,
+                    ];
+                }),
+                'brandTypes' => $brand->brandTypes->map(function ($type) {
+                    return [
+                        'id' => $type->id,
+                        'name' => $type->translation->name ?? $type->name,
+                    ];
+                }),
             ];
         })->toArray();
 

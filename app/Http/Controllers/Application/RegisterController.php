@@ -145,6 +145,21 @@ class RegisterController extends Controller
         $inputs['freezone_id'] = isset($inputs['freezone_id']) ? $inputs['freezone_id']: null;
         $user = Auth::guard('sanctum')->user();
         $brand = $user->brand;
+        $categories = [];
+        $types = [];
+
+        if($request->has('categories')) {
+            $categories = $request->get('categories');
+        } else if($request->filled('category_id')) {
+            $categories[] = $request->get('category_id');
+        }
+
+        if($request->has('types')) {
+            $types = $request->get('types');
+        } else if($request->filled('type')) {
+            $types[] = $request->get('type');
+        }
+
         if ($brand) {
             $brand->update([
                 'name' => $inputs['company_name'],
@@ -157,11 +172,15 @@ class RegisterController extends Controller
                 'ipark_id' => $inputs['ipark_id'],
                 'freezone_id' => $inputs['freezone_id'],
                 'address' => $inputs['address'],
-                'type' => $inputs['type'],
-                'category_id' => $inputs['category_id'],
+                'type' => $types[0],
+                'category_id' => $categories[0],
                 'lat' => $inputs['lat'] ?? null,
                 'lng' => $inputs['lng'] ?? null,
             ]);
+
+            $brand->categories()->sync($categories);
+            $brand->brandTypes()->sync($types);
+
             if ($request->file('Ncard')) {
                 $NcardName = time() . random_int(1000, 9999) . '.' . $request->file('Ncard')->getClientOriginalExtension();
                 $request->file('Ncard')->move('upload/documents/', $NcardName);
@@ -201,12 +220,16 @@ class RegisterController extends Controller
                 'ipark_id' => $inputs['ipark_id'],
                 'freezone_id' => $inputs['freezone_id'],
                 'address' => $inputs['address'],
-                'type' => $inputs['type'],
-                'category_id' => $inputs['category_id'],
+                'type' => $types[0],
+                'category_id' => $categories[0],
                 'lat' => $inputs['lat'] ?? null,
                 'lng' => $inputs['lng'] ?? null,
                 'vip_expired_time' => Carbon::now()->addMonth(3),
             ]);
+
+            $brand->categories()->sync($categories);
+            $brand->brandTypes()->sync($types);
+
             $NcardPath = null;
             if ($request->file('Ncard')) {
                 $NcardName = time() . random_int(1000, 9999) . '.' . $request->file('Ncard')->getClientOriginalExtension();

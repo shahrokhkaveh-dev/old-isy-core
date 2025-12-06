@@ -11,6 +11,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -47,15 +48,24 @@ class Brand extends Model
             ]
         ];
     }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function user(){
         return $this->hasOne(User::class);
     }
+
     public function province(){
         return $this->belongsTo(Province::class);
     }
+
     public function city(){
         return $this->belongsTo(City::class);
     }
@@ -99,6 +109,7 @@ class Brand extends Model
         ];
         return $st[$this->status];
     }
+
     public function document(){
         return $this->hasOne(Document::class);
     }
@@ -129,6 +140,10 @@ class Brand extends Model
 
     public function brandType(){
         return $this->belongsTo(BrandType::class, 'type', 'id');
+    }
+    public function brandTypes(): BelongsToMany
+    {
+        return $this->belongsToMany(BrandType::class);
     }
 
     public function referrals(): HasMany

@@ -53,7 +53,9 @@ class BrandUpdateRequest extends FormRequest
             'post_code' => ['nullable','string', 'max:10','ir_postal_code'],
             'address' => ['nullable','string', 'max:120'],
             'logo' => ['nullable','mimes:jpeg,jpg,png,webp'],
-            'category_id' => ['nullable','exists:categories,id'],
+            'category_id' => ['nullable', 'integer','exists:categories,id'],
+            'categories' => ['nullable', 'array'],
+            'categories.*' => ['required', 'integer', 'exists:categories,id'],
             'management_profile' => ['nullable','image'],
             'management_name' => ['nullable','string', 'max:255'],
             'management_position' => ['nullable','string', 'max:255'],
@@ -61,6 +63,8 @@ class BrandUpdateRequest extends FormRequest
             'management_number' => ['nullable','string', 'max:11','ir_mobile'],
             'lat'=>['nullable','string', 'max:255'],
             'lng'=>['nullable','string', 'max:255'],
+            'types' => ['nullable', 'array'],
+            'types.*' => ['required', 'integer', 'exists:brand_types,id'],
         ];
     }
 

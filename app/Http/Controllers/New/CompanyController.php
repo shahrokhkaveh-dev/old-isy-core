@@ -14,7 +14,7 @@ class CompanyController extends Controller
 {
     public function show(string $slug): \Illuminate\Http\JsonResponse
     {
-        $brand = Brand::where('slug', $slug)->with(['category', 'province', 'city', 'ipark'])->first();
+        $brand = Brand::where('slug', $slug)->with(['category', 'categories', 'brandTypes', 'province', 'city', 'ipark'])->first();
         if (!$brand)
         {
             abort(404);

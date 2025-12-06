@@ -458,6 +458,19 @@ class BrandController extends Controller
         $id = $request->user()->brand_id;
         $brand = Brand::findOrFail($id);
 
+        $types = [];
+        $categories = [];
+
+        if($request->filled('types')) {
+            $types = $request->get('types');
+        }
+
+        if($request->filled('categories')) {
+            $categories = $request->get('categories');
+        } else if($request->filled('category_id')) {
+            $categories[] = $request->get('category_id');
+        }
+
         $updatableColumns = [
             'province_id' => 'province_id',
             'city_id' => 'city_id',
@@ -468,7 +481,6 @@ class BrandController extends Controller
             'phone_number' => 'phone_number',
             'post_code' => 'post_code',
             'address' => 'address',
-            'category_id' => 'category_id',
             'management_name' => 'managment_name',
             'management_position' => 'managment_position',
             'description' => 'description',
@@ -481,6 +493,14 @@ class BrandController extends Controller
             if ($request->input($key)) {
                 $brand->{$value} = $request->input($key);
             }
+        }
+
+        if(count($categories) > 0) {
+            $brand->categories()->sync($categories);
+        }
+
+        if(count($types) > 0) {
+            $brand->brandTypes()->sync($types);
         }
 
         if ($request->file('logo')) {

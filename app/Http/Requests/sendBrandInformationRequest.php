@@ -47,8 +47,12 @@ class sendBrandInformationRequest extends FormRequest
             'Ncard' => 'nullable|mimes:jpg,png,pdf,jpeg|max:1024',
             'Newspaper' => 'nullable|mimes:jpg,png,pdf,jpeg|max:1024',
             'lastChange' => 'mimes:jpg,png,pdf,jpeg|max:1024',
-            'type' => 'required|exists:brand_types,id',
-            'category_id' => 'required',
+            'type' => 'required_without:types|integer|exists:brand_types,id',
+            'types' => 'required_without:type|array',
+            'types.*' => 'required|integer|exists:brand_types,id',
+            'category_id' => 'required_without:categories|integer|exists:categories,id',
+            'categories' => 'required_without:category_id|array',
+            'categories.*' => 'required|integer|exists:categories,id',
             // 'testing' => 'required',
         ];
 
