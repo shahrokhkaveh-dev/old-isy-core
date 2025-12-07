@@ -588,8 +588,8 @@ class HomeController extends Controller
                     $query->select('id', 'name');
                 },
                 'category.translation',
-                'categories' => fn($q) => $q->select('id', 'name')->with(['translation:brand_id,name']),
-                'brandTypes' => fn($q) => $q->select('id', 'name')->with(['translation:brand_type_id,name']),
+                'categories' => fn($q) => $q->select('categories.id', 'categories.name')->with(['translation:category_id,name']),
+                'brandTypes' => fn($q) => $q->select('brand_types.id', 'brand_types.name')->with(['translation:brand_type_id,name']),
                 'products' => function ($query) {
                     $query->select('id', 'brand_id', 'name', 'image', 'slug');
                 },
