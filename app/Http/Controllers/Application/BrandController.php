@@ -387,7 +387,12 @@ class BrandController extends Controller
             return ApplicationService::responseFormat([], false, __('messages.you_are_real_person'), -1);
         }
 
-        $brand = Brand::find(\request()->user()->brand_id);
+        $brand = Brand::query()
+            ->with([
+                'categories:id,name',
+                'brandTypes:id,name',
+            ])
+            ->find(\request()->user()->brand_id);
 
         if (!$brand) {
             return ApplicationService::responseFormat([], false, __('messages.brand_not_found'), -2);
@@ -421,7 +426,9 @@ class BrandController extends Controller
             'lat',
             'lng',
             'logo_path',
-            'managment_profile_path'
+            'managment_profile_path',
+            'categories',
+            'brandTypes',
         ];
 
         $filteredBrandData = $brand->only($selectedColumns);
